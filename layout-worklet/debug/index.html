@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  .parent,
+  .parent-flex {
+    border: 5px solid red;
+  }
+
+  .child,
+  .child-flex {
+    border: 5px solid blue;
+  }
+
+  .child:nth-of-type(2),
+  .child-flex:nth-of-type(2) {
+    background: darkgray;
+  }
+
+  .child:nth-of-type(3),
+  .child-flex:nth-of-type(3) {
+    background: gray;
+  }
+
+  .parent-flex {
+    display: flex;
+  }
+
+  .parent {
+    display: layout(flex);
+    --flex-direction: row;
+  }
+</style>
+
+<div class="parent">
+  <div class="child">
+    Lorem ipsum dolor sit amet, consul disputando ne his...
+  </div>
+  <div class="child">
+    Lorem ipsum dolor sit amet, consul disputando ne his...
+  </div>
+  <div class="child">
+    Lorem ipsum dolor sit amet, consul disputando ne his...
+  </div>
+</div>
+
+<br />
+
+<div class="parent-flex">
+  <div class="child-flex">
+    Lorem ipsum dolor sit amet, consul disputando ne his...
+  </div>
+  <div class="child-flex">
+    Lorem ipsum dolor sit amet, consul disputando ne his...
+  </div>
+  <div class="child-flex">
+    Lorem ipsum dolor sit amet, consul disputando ne his...
+  </div>
+</div>
+
+<script>
+  if (location.protocol === "http:" && location.hostname !== "localhost")
+    location.protocol = "https:";
+  if ("layoutWorklet" in CSS) {
+    CSS.layoutWorklet.addModule("debug.js");
+    CSS.layoutWorklet.addModule("flex/worklet.js");
+    CSS.layoutWorklet.addModule("centering.js");
+  } else {
+    document.body.innerHTML =
+      'You need support for <a href="https://drafts.css-houdini.org/css-layout-api/">CSS Layout API</a> to view this demo :(';
+  }
+</script>
